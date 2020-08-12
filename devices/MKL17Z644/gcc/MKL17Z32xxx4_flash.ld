@@ -36,6 +36,7 @@ STACK_SIZE = DEFINED(__stack_size__) ? __stack_size__ : 0x0100;
 MEMORY
 {
   m_interrupts          (RX)  : ORIGIN = 0x00000000, LENGTH = 0x00000200
+  m_bootloader_config   (RX)  : ORIGIN = 0x000003C0, LENGTH = 0x00000040
   m_flash_config        (RX)  : ORIGIN = 0x00000400, LENGTH = 0x00000010
   m_text                (RX)  : ORIGIN = 0x00000410, LENGTH = 0x00007BF0
   m_data                (RW)  : ORIGIN = 0x1FFFF800, LENGTH = 0x00002000
@@ -51,6 +52,13 @@ SECTIONS
     KEEP(*(.isr_vector))     /* Startup code */
     . = ALIGN(4);
   } > m_interrupts
+
+  .bootloader_config :
+￼  {
+￼    . = ALIGN(4);
+￼    KEEP(*(.BootloaderConfig)) /* Bootloader Configuration Area (BCA) */
+￼    . = ALIGN(4);
+￼  } > m_bootloader_config
 
   .flash_config :
   {
