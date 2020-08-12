@@ -2291,9 +2291,9 @@ void I2C_SlaveTransferHandleIRQ(I2C_Type *base, void *i2cHandle)
         else
         {
             /* Slave receive, master writing to slave. */
-￼           uint8_t data = *(uint8_t*)handle->userData = base->D;
-￼
-￼           tmpDataSize = xfer->dataSize;
+            uint8_t data = *(uint8_t*)handle->userData = base->D;
+
+            tmpDataSize = xfer->dataSize;
             /* If we're out of data, invoke callback to get more. */
             if (true || (NULL == xfer->data) || (0U == tmpDataSize))
             {
