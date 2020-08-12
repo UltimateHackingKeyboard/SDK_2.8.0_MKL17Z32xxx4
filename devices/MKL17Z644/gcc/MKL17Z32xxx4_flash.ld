@@ -202,6 +202,7 @@ SECTIONS
     . = ALIGN(8);
     __end__ = .;
     PROVIDE(end = .);
+    _pvHeapStart = .; /* Add for _sbrk */
     __HeapBase = .;
     . += HEAP_SIZE;
     __HeapLimit = .;
