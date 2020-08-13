@@ -172,6 +172,7 @@ static inline void GPIO_PinWrite(GPIO_Type *base, uint32_t pin, uint8_t output)
         base->PSOR = GPIO_FIT_REG(u32flag << pin);
     }
 }
+#define GPIO_WritePinOutput(base, pin, output) GPIO_PinWrite((base), (pin), (output))
 
 /*!
  * @brief Sets the output level of the multiple GPIO pins to the logic 1.
@@ -184,6 +185,8 @@ static inline void GPIO_PortSet(GPIO_Type *base, uint32_t mask)
     base->PSOR = GPIO_FIT_REG(mask);
 }
 
+#define GPIO_SetPinsOutput(base, mask) GPIO_PortSet((base), (mask))
+
 /*!
  * @brief Sets the output level of the multiple GPIO pins to the logic 0.
  *
@@ -194,6 +197,7 @@ static inline void GPIO_PortClear(GPIO_Type *base, uint32_t mask)
 {
     base->PCOR = GPIO_FIT_REG(mask);
 }
+#define GPIO_ClearPinsOutput(base, mask) GPIO_PortClear((base), (mask))
 
 /*!
  * @brief Reverses the current output logic of the multiple GPIO pins.
@@ -205,6 +209,7 @@ static inline void GPIO_PortToggle(GPIO_Type *base, uint32_t mask)
 {
     base->PTOR = GPIO_FIT_REG(mask);
 }
+#define GPIO_TogglePinsOutput(base, mask) GPIO_PortToggle((base), (mask))
 
 /*@}*/
 
@@ -224,6 +229,7 @@ static inline uint32_t GPIO_PinRead(GPIO_Type *base, uint32_t pin)
 {
     return (((uint32_t)(base->PDIR) >> pin) & 0x01UL);
 }
+#define GPIO_ReadPinInput(base, pin) GPIO_PinRead((base), (pin))
 
 /*@}*/
 
