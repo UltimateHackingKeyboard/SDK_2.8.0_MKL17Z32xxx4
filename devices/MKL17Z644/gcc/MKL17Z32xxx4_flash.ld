@@ -54,11 +54,11 @@ SECTIONS
   } > m_interrupts
 
   .bootloader_config :
-￼  {
-￼    . = ALIGN(4);
-￼    KEEP(*(.BootloaderConfig)) /* Bootloader Configuration Area (BCA) */
-￼    . = ALIGN(4);
-￼  } > m_bootloader_config
+  {
+    . = ALIGN(4);
+    KEEP(*(.BootloaderConfig)) /* Bootloader Configuration Area (BCA) */
+    . = ALIGN(4);
+  } > m_bootloader_config
 
   .flash_config :
   {
